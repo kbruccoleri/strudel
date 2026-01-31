@@ -1,0 +1,24 @@
+
+const drums = 
+  sound("<bd bd hh bd rim bd hh bd bd bd>*10")
+  .lpf(800)
+
+const piano = 
+  stack(
+    "<48 52 55 59 62 ~ <64 67 60 64>>*10",
+    "<72 71 [~ 69] 67 <69 71>>*5",
+    "<77 76 71 72>*1" 
+  )
+  .note()
+  .sound("piano");
+
+const bass = 
+  note("<36 ~!5 33 35>")
+  .sound("piano")
+  .crush(5)
+
+stack(
+  drums,
+  piano,
+  bass
+)

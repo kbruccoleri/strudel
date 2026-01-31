@@ -1,0 +1,32 @@
+scale = 'f1:minor'
+
+$: 
+  cat(
+    "[5 [4 ~]] 4 [~ [2 2]] [~ [3 3]]",
+    "[0 [5 6]] 5 [~ [8 7]] [[~ 9] [8 9]]"
+  ).note()
+  .scale(scale)
+  .sound("gm_synth_bass_1")
+  .lpf(800)
+  ._punchcard()
+
+$:
+  note(`0@1.5 1@1.5 2 3 9 11 14`)
+    .scale(scale)
+    .sound("gm_guitar_harmonics")
+._punchcard()
+    // .pdecay(0.15).distort("3:.5")
+
+$: 
+  sound("bd*4, [~ <sd cp sd [cp [cp cp]]>]*2, [~ hh]*4")
+    .bank("RolandTR909")
+    ._punchcard()
+
+
+$: 
+  sound("num:3 num:2 num:1 num:0")
+    .gain(.8)
+    .crush(4)
+    .tremsync(4).tremolophase("<0.125 .25 .66>")
+    ._punchcard()
+
